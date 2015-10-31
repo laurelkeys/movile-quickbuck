@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Colors -->
+    <color name="lightOrange">#FF9C47</color>
+    <color name="darkOrange">#FF7600</color>
+
+    <!-- -->
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="background">#FFFFFF</color>
-    <color name="backgroundButton">#FF7600</color>
+    <color name="backgroundButton">@color/darkOrange</color>
     <color name="base_navigation_toolbar_background">#FF9c47</color>
     <color name="base_navigation_toolbar_transparent_background">#88333333</color>
 </resources>
