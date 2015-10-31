@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -39,25 +38,22 @@
         android:layout_marginRight="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:password="true"
         android:hint="Password"
-        android:inputType="textEmailAddress"
+        android:password="true"
         android:backgroundTint="@color/base_navigation_toolbar_background"/>
 
-    <Button
-        android:id="@+id/login"
+    <EditText
+        android:id="@+id/confirm_password"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Login"
-        android:background="@color/backgroundButton"
-        android:textColor="@color/background"
-        android:onClick="logarUsuario"
-        />
+        android:password="true"
+        android:hint="Confirm Password"
+        android:backgroundTint="@color/base_navigation_toolbar_background"/>
+
 
     <Button
         android:id="@+id/signin"
@@ -71,7 +67,6 @@
         android:text="Sign in"
         android:background="@color/backgroundButton"
         android:textColor="@color/background"
-        android:onClick="cadastrarUsuario"
+        android:onClick="registerUser"
         />
-
-</LinearLayout>
+    </LinearLayout>

@@ -40,6 +40,11 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
+    public void cadastrarUsuario(View view){
+        Intent intent = new Intent(this, SignInActivity.class);
+        startActivity(intent);
+    }
+
     public void logarUsuario(View view) {
         final EditText email = (EditText) findViewById(R.id.email_address);
         EditText password = (EditText) findViewById(R.id.password);
