@@ -53,12 +53,9 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onAuthenticated(AuthData authData) {
                     Toast.makeText(getApplicationContext(), "Conectado com sucesso", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                    String emailUser = email.getText().toString();
-                    intent.putExtra(EXTRA_EMAIL, emailUser);
                     String id = authData.getUid();
-                    intent.putExtra(EXTRA_ID, id);
-                    startActivity(intent);
+                    nextPage(id);
+
                 }
 
                 @Override
@@ -68,6 +65,16 @@ public class LoginActivity extends AppCompatActivity {
             });
         }
 
+    }
+
+    private void nextPage(String id){
+        final EditText email = (EditText) findViewById(R.id.email_address);
+        EditText password = (EditText) findViewById(R.id.password);
+        Intent intent = new Intent(this, MenuActivity.class);
+        String emailUser = email.getText().toString();
+        intent.putExtra(EXTRA_EMAIL, emailUser);
+        intent.putExtra(EXTRA_ID, id);
+        startActivity(intent);
     }
 
     @Override

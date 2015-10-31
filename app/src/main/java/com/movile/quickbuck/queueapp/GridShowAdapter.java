@@ -6,13 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 
-/**
- * Created by android on 7/30/15.
- */
-
-/**
- * Created by android on 7/21/15.
- */
 public class GridShowAdapter extends FragmentPagerAdapter {
 
     public static final int POSITION_FIRST_CONTENT = 0;
