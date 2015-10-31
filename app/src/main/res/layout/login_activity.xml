@@ -55,6 +55,7 @@
         android:text="Login"
         android:background="@color/backgroundButton"
         android:textColor="@color/background"
+        android:onClick="logarUsuario"
         />
 
     <Button
