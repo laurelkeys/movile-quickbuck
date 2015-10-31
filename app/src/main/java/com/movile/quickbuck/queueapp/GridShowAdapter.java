@@ -30,7 +30,7 @@ public class GridShowAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == POSITION_FIRST_CONTENT) {
-            //return new PopularShowsFragment();
+           // return new PopularShowsFragment();
         }
         if (position == POSITION_SECOND_CONTENT) {
             //return new PopularMoviesFragment();
