@@ -12,9 +12,9 @@
         android:id="@+id/shows_tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorColor="@color/backgroundButton"
-        android:background="@color/background"
-        android:textColor="@color/background"
+        app:tabIndicatorColor="@color/background"
+        android:background="@color/backgroundButton"
+        android:textColor="#FFFFFF"
         app:tabGravity="center"
         />
 
