@@ -54,8 +54,8 @@ public class PlaceListAdapter extends ArrayAdapter<Restaurant> {
     }
 
     private void populateViewFromHolder(ViewHolder holder, final int position) {
-        holder.getNumber().setText(placesList.get(position).getQueueSize()); //numero restaurante
-        holder.getTitle().setText(placesList.get(position).getName().toString()); // nome restaurante
+        holder.getNumber().setText(placesList.get(position).queue.queueSize.toString()); //numero restaurante
+        holder.getTitle().setText(placesList.get(position).name); // nome restaurante
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -47,18 +47,13 @@ public class PlaceListFragment extends Fragment implements OnRestaurantClick {
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-
-                //System.out.print(snapshot.getValue());
-                //HashMap<Object,Object> dois = (HashMap<Object,Object>) um;
                 try {
                     List<Restaurant> restaurants = getRestaurantsFromFirebase(snapshot);
 
                     printRestaurants(restaurants, mAdapter);
                 } catch (Exception e) {
-                    Log.e("CARLOS: ", e.toString());
-                    System.err.print("Carlos" + e.toString());
+                    Log.e("ERR: ", e.toString());
                 }
-                // LLSLSLSLSLSLLALALLA
             }
 
             @Override
