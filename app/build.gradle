@@ -48,5 +48,7 @@ dependencies {
 
     compile 'com.raizlabs.android:DBFlow:2.0.0'
 
+    debugCompile 'com.facebook.stetho:stetho:1.1.1'
+
     apt 'com.raizlabs.android:DBFlow-Compiler:2.0.0'
 }

@@ -1,5 +1,6 @@
 package com.movile.quickbuck.queueapp;
 
+import com.facebook.stetho.Stetho;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,9 +15,12 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.stetho.Stetho;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.movile.quickbuck.queueapp.database.dao.UserDAO;
+import com.raizlabs.android.dbflow.config.FlowManager;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -29,6 +33,14 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        FlowManager.init(this);
+
+        Stetho.initialize(
+                Stetho.newInitializerBuilder(this)
+                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+                        .build());
 
 
     }
@@ -47,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void logarUsuario(View view) {
         final EditText email = (EditText) findViewById(R.id.email_address);
-        EditText password = (EditText) findViewById(R.id.password);
+        final EditText password = (EditText) findViewById(R.id.password);
         if (email.getText().toString().equals("") || password.getText().toString().equals(""))
             Toast.makeText(this, "Please fill all the fields correctly", Toast.LENGTH_LONG).show();
         else
@@ -58,6 +70,9 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onAuthenticated(AuthData authData) {
                     Toast.makeText(getApplicationContext(), "Conectado com sucesso", Toast.LENGTH_LONG).show();
+                    Usuario user = new Usuario(email.getText().toString(), password.getText().toString(), "");
+                    UserDAO dao = new UserDAO(getApplicationContext());
+                    dao.save(user);
                     String id = authData.getUid();
                     nextPage(id);
 
