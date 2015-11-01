@@ -1,5 +1,6 @@
 package com.movile.quickbuck.queueapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -16,6 +18,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.GenericTypeIndicator;
 import com.firebase.client.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +30,12 @@ import java.util.Map;
 public class PlaceListFragment extends Fragment implements OnRestaurantClick {
 
     private View mView;
+
+    public final static String EXTRA_NAME = "EXTRA_NAME";
+    public final static String EXTRA_ADDRESS = "EXTRA_ADDRESS";
+    public final static String EXTRA_DESCRIPTION = "EXTRA_DESCRIPTION";
+    public final static String EXTRA_QUEUE = "EXTRA_QUEUE";
+    public final static String EXTRA_ACESSCODE = "EXTRA_ACESSCODE";
 
     @Nullable
     @Override
@@ -83,6 +92,12 @@ public class PlaceListFragment extends Fragment implements OnRestaurantClick {
 
     @Override
     public void onRestaurantClick(Restaurant restaurant) {
-        //abrir pagina do restaurante
+        Intent intent = new Intent(this.getActivity(), RestaurantActivity.class);
+        intent.putExtra(EXTRA_NAME, restaurant.name);
+        intent.putExtra(EXTRA_ACESSCODE, restaurant.accessCode);
+        intent.putExtra(EXTRA_ADDRESS, restaurant.address);
+        intent.putExtra(EXTRA_DESCRIPTION, restaurant.description);
+        intent.putExtra(EXTRA_QUEUE, restaurant.queue.queueSize);
+        startActivity(intent);
     }
 }

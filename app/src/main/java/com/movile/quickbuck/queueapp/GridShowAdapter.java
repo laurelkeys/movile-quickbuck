@@ -23,13 +23,13 @@ public class GridShowAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == POSITION_FIRST_CONTENT) {
-           return new PlaceListFragment();
+            return new StatusFragment();
         }
         if (position == POSITION_SECOND_CONTENT) {
            return new JoinFragment();
         }
         if (position == POSITION_THIRD_CONTENT) {
-           return new StatusFragment();
+            return new PlaceListFragment();
         }
         return null;
     }
@@ -42,13 +42,13 @@ public class GridShowAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         if (position == POSITION_FIRST_CONTENT) {
-            return "Place";
+            return"Status";
         }
         if (position == POSITION_SECOND_CONTENT) {
-            return "Join";
+            return "Place";
         }
         if (position == POSITION_THIRD_CONTENT) {
-            return"Status";
+            return "Join";
         }
         return null;
     }

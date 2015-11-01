@@ -11,5 +11,5 @@ public class Restaurant {
 
     //public int getQueueSize(){return queue.getQueueSize();}
 
-    //public String getName(){return name;}
+    public String getName(){return name;}
 }
