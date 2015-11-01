@@ -11,7 +11,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
-        multiDexEnabled true
+
     }
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
@@ -22,7 +22,6 @@ android {
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/ASL2.0'
-        exclude 'classes.dex'
     }
     buildTypes {
         release {
@@ -34,14 +33,20 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
     testCompile 'junit:junit:4.12'
+
     compile 'com.android.support:appcompat-v7:23.1.0'
+
     compile 'com.android.support:design:23.1.0'
+
     compile 'com.parse.bolts:bolts-android:1.+'
+
     compile 'com.parse:parse-android:1.+'
-    compile 'com.google.code.gson:gson:2.3.1'
+
     compile 'com.raizlabs.android:DBFlow-Core:2.0.0'
+
     compile 'com.raizlabs.android:DBFlow:2.0.0'
-    debugCompile 'com.facebook.stetho:stetho:1.1.1'
+
     apt 'com.raizlabs.android:DBFlow-Compiler:2.0.0'
 }
