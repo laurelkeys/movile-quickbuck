@@ -1,6 +1,9 @@
 package com.movile.quickbuck.queueapp;
 
 import android.os.Bundle;
+
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,12 +14,11 @@ import android.widget.ListView;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.firebase.client.GenericTypeIndicator;
 import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by hp on 31/10/2015.
@@ -45,20 +47,15 @@ public class PlaceListFragment extends Fragment implements OnRestaurantClick {
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                //GenericTypeIndicator<HashMap<String, List<Restaurant>>> t = new GenericTypeIndicator<HashMap<String,List<Restaurant>>>() {};
-                //HashMap<String,List<Restaurant>> list = snapshot.getValue(t);
-                //mAdapter.updateRestaurants(list.get("Restaurants"));
+                ArrayList<User> lista = new ArrayList<User>();
+                lista.add(new User("a", "12"));
+                Gson gson = new Gson();
+                Queue queue = new Queue(1, lista);
+                String a = gson.toJson(queue);
+                HashMap<String,ArrayList<Restaurant>> map = gson.fromJson(snapshot.getValue(String.class), new HashMap<String, ArrayList<Restaurant>>().getClass());
+                ArrayList<Restaurant> list = map.get("Restaurants");
 
-                Map<String, Object> value = (Map<String, Object>)snapshot.getValue();
-
-                /*List<Restaurant> list = null;
-
-                for (DataSnapshot newSnapshot : snapshot.getChildren()) {
-                    Restaurant restaurant = newSnapshot.getValue(Restaurant.class);
-                    list.add(restaurant);
-                }
-
-                mAdapter.updateRestaurants(list);*/
+                mAdapter.updateRestaurants(list);
             }
 
             @Override

@@ -5,10 +5,10 @@ package com.movile.quickbuck.queueapp;
  */
 public class Restaurant {
     float accessCode;
-    String name;
-    String descrition;
     String address;
-    int queueSize;
+    String descrition;
+    String name;
+    Queue queue;
 
     public Restaurant() {
         // empty default constructor, necessary for Firebase to be able to deserialize blog posts
@@ -30,7 +30,7 @@ public class Restaurant {
         return address;
     }
 
-    public Integer getQueueSize() {
-        return queueSize;
+    public Queue getQueueSize() {
+        return queue;
     }
 }

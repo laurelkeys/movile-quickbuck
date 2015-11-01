@@ -26,10 +26,10 @@ public class GridShowAdapter extends FragmentPagerAdapter {
            return new PlaceListFragment();
         }
         if (position == POSITION_SECOND_CONTENT) {
-           return new PlaceListFragment();
+           return new JoinFragment();
         }
         if (position == POSITION_THIRD_CONTENT) {
-           return new PlaceListFragment();
+           return new StatusFragment();
         }
         return null;
     }
