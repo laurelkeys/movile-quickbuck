@@ -1,21 +1,13 @@
 package com.movile.quickbuck.queueapp;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by Felipe on 31/10/2015.
- */
-public class User {
-    private String username;
-    private String id;
+    public class User {
 
-    public User(String nome, String id){
-        username = nome;
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-    public String getId() {
-        return id;
-    }
+        @SerializedName("id")
+        @Expose
+        public String id;
+        @SerializedName("username")
+        @Expose
+        public String username;
 }

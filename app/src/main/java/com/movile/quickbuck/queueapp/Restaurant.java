@@ -1,36 +1,31 @@
 package com.movile.quickbuck.queueapp;
 
-/**
- * Created by Felipe on 31/10/2015.
- */
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Restaurant {
-    float accessCode;
-    String address;
-    String descrition;
-    String name;
-    Queue queue;
 
-    public Restaurant() {
-        // empty default constructor, necessary for Firebase to be able to deserialize blog posts
+    @SerializedName("name")
+    @Expose
+    public String name;
+    @SerializedName("address")
+    @Expose
+    public String address;
+    @SerializedName("description")
+    @Expose
+    public String description;
+    @SerializedName("queue")
+    @Expose
+    public Queue queue;
+    @SerializedName("accessCode")
+    @Expose
+    public String accessCode;
+
+    public int getQueueSize(){
+        return queue.getQueueSize();
     }
 
-    public float getAccessCode() {
-        return accessCode;
-    }
-
-    public String getName() {
+    public String getName(){
         return name;
-    }
-
-    public String getDescrition() {
-        return descrition;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public Queue getQueueSize() {
-        return queue;
     }
 }

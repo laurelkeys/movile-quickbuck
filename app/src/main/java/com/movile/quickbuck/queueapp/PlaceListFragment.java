@@ -1,11 +1,10 @@
 package com.movile.quickbuck.queueapp;
 
 import android.os.Bundle;
-
-import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +13,14 @@ import android.widget.ListView;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.GenericTypeIndicator;
 import com.firebase.client.ValueEventListener;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by hp on 31/10/2015.
@@ -37,7 +39,6 @@ public class PlaceListFragment extends Fragment implements OnRestaurantClick {
     @Override
     public void onStart() {
         super.onStart();
-
         ListView view = (ListView) this.getActivity().findViewById(R.id.list_view_restaurants);
         final PlaceListAdapter mAdapter = new PlaceListAdapter(this.getActivity(), this);
         view.setAdapter(mAdapter);
@@ -47,21 +48,43 @@ public class PlaceListFragment extends Fragment implements OnRestaurantClick {
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                ArrayList<User> lista = new ArrayList<User>();
-                lista.add(new User("a", "12"));
-                Gson gson = new Gson();
-                Queue queue = new Queue(1, lista);
-                String a = gson.toJson(queue);
-                HashMap<String,ArrayList<Restaurant>> map = gson.fromJson(snapshot.getValue(String.class), new HashMap<String, ArrayList<Restaurant>>().getClass());
-                ArrayList<Restaurant> list = map.get("Restaurants");
 
-                mAdapter.updateRestaurants(list);
+                //System.out.print(snapshot.getValue());
+                //HashMap<Object,Object> dois = (HashMap<Object,Object>) um;
+                try {
+                    List<Restaurant> restaurants = getRestaurantsFromFirebase(snapshot);
+
+                    printRestaurants(restaurants, mAdapter);
+                } catch (Exception e) {
+                    Log.e("CARLOS: ", e.toString());
+                    System.err.print("Carlos" + e.toString());
+                }
+                // LLSLSLSLSLSLLALALLA
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
             }
         });
+    }
+
+    private void printRestaurants(final List<Restaurant> restaurants, final PlaceListAdapter mAdapter) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mAdapter.updateRestaurants(restaurants);
+            }
+        });
+    }
+
+    @NonNull
+    private List<Restaurant> getRestaurantsFromFirebase(DataSnapshot snapshot) {
+        List<Restaurant> restaurants = new ArrayList<Restaurant>();
+        for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+            Restaurant res = postSnapshot.getValue(Restaurant.class);
+            restaurants.add(res);
+        }
+        return restaurants;
     }
 
     @Override
