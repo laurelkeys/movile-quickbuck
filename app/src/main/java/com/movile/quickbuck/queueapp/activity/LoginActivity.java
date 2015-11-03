@@ -1,4 +1,4 @@
-package com.movile.quickbuck.queueapp;
+package com.movile.quickbuck.queueapp.activity;
 
 import com.facebook.stetho.Stetho;
 import android.app.AlertDialog;

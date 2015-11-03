@@ -1,8 +1,11 @@
-package com.movile.quickbuck.queueapp;
+package com.movile.quickbuck.queueapp.model;
 
 /**
  * Created by hp on 31/10/2015.
  */
+
+//Fix me - rename to UserData
+
 public class Usuario {
     private String mNome;
     private String mSenha;

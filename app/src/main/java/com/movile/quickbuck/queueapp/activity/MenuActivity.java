@@ -1,4 +1,4 @@
-package com.movile.quickbuck.queueapp;
+package com.movile.quickbuck.queueapp.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;

@@ -1,4 +1,4 @@
-package com.movile.quickbuck.queueapp;
+package com.movile.quickbuck.queueapp.interfaces;
 
 /**
  * Created by Felipe on 31/10/2015.

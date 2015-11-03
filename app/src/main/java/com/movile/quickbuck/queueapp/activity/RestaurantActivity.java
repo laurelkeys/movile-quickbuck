@@ -1,4 +1,4 @@
-package com.movile.quickbuck.queueapp;
+package com.movile.quickbuck.queueapp.activity;
 
 import android.app.AlertDialog;
 import android.app.DownloadManager;
@@ -62,7 +62,7 @@ public class RestaurantActivity extends AppCompatActivity {
         alertDialog.setMessage("Hoje é por conta da casa");
         alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-// here you can add functions
+                // here you can add functions
             }
         });
         alertDialog.show();

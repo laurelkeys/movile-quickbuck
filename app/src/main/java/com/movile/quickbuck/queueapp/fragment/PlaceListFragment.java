@@ -1,4 +1,4 @@
-package com.movile.quickbuck.queueapp;
+package com.movile.quickbuck.queueapp.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
